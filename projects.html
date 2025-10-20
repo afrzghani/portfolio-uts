@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyek - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3b82f6',
+                        dark: '#0f172a',
+                        darker: '#020617',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .project-card {
+            transition: all 0.3s ease;
+        }
+        .project-card.hidden {
+            display: none;
+        }
+        .filter-btn.active {
+            background-color: #3b82f6;
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-darker text-gray-100">
+    <!-- Nav -->
+    <nav class="bg-dark/80 backdrop-blur-sm fixed w-full z-50 border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-bold text-primary">afrzghani</a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-100 hover:text-primary transition duration-300">Beranda</a>
+                    <a href="services.html" class="text-gray-300 hover:text-primary transition duration-300">Layanan</a>
+                    <a href="projects.html" class="text-gray-300 hover:text-primary transition duration-300">Portofolio</a>
+                    <a href="profile.html" class="text-gray-300 hover:text-primary transition duration-300">Profil</a>
+                </div>
+                <!-- Mobile menu -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-primary">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-dark border-t border-gray-800">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 text-gray-100 hover:bg-gray-800 rounded-md">Beranda</a>
+                <a href="services.html" class="block px-3 py-2 text-gray-300 hover:bg-gray-800 rounded-md">Layanan</a>
+                <a href="projects.html" class="block px-3 py-2 text-gray-300 hover:bg-gray-800 rounded-md">Portofolio</a>
+                <a href="profile.html" class="block px-3 py-2 text-gray-300 hover:bg-gray-800 rounded-md">Profil</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <section class="pt-32 pb-16 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto text-center">
+            <h1 class="text-5xl md:text-6xl font-bold mb-4 pb-2 bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent">
+                Portofolio Proyek Saya
+            </h1>
+            <p class="text-xl text-gray-400 max-w-2xl mx-auto mb-8">
+                Kumpulan proyek yang menampilkan karya saya dalam UI/UX, branding, dan desain visual lain.
+            </p>
+        </div>
+    </section>
+
+    <!-- Filter  -->
+    <section class="pb-8 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+
+            <!-- Filter Button -->
+            <div class="flex flex-wrap gap-3 justify-center md:justify-start">
+                <button class="filter-btn active px-6 py-2 rounded-lg bg-primary text-white transition duration-300" data-filter="all">
+                    Semua Proyek
+                </button>
+                <button class="filter-btn px-6 py-2 rounded-lg bg-dark text-gray-400 hover:bg-primary/20 hover:text-primary transition duration-300" data-filter="ui-ux">
+                    UI/UX
+                </button>
+                <button class="filter-btn px-6 py-2 rounded-lg bg-dark text-gray-400 hover:bg-primary/20 hover:text-primary transition duration-300" data-filter="branding">
+                    Branding
+                </button>
+                <button class="filter-btn px-6 py-2 rounded-lg bg-dark text-gray-400 hover:bg-primary/20 hover:text-primary transition duration-300" data-filter="web">
+                    Desain Web
+                </button>
+                <button class="filter-btn px-6 py-2 rounded-lg bg-dark text-gray-400 hover:bg-primary/20 hover:text-primary transition duration-300" data-filter="mobile">
+                    Mobile
+                </button>
+            </div>
+
+            <div class="mt-4 text-gray-400">
+                Menampilkan <span id="project-count">9</span> proyek
+            </div>
+        </div>
+    </section>
+
+    <!-- Portofolio -->
+    <section class="pb-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div id="projects-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-dark/50">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">Ada Proyek yang Ingin Anda Wujudkan?</h2>
+            <p class="text-xl text-gray-300 mb-8">
+                Mari kita bekerja sama untuk mewujudkan ide-ide Anda. Saya selalu bersemangat untuk menghadapi tantangan baru dan menciptakan sesuatu yang luar biasa.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="services.html" class="inline-flex items-center justify-center gap-2 bg-primary hover:bg-blue-600 text-white font-semibold px-8 py-4 rounded-lg transition duration-300 transform hover:scale-105">
+                    <i class="fas fa-envelope"></i>
+                    Kirim request
+                </a>
+                <a href="profile.html" class="inline-flex items-center justify-center gap-2 bg-gray-800 hover:bg-gray-700 text-white font-semibold px-8 py-4 rounded-lg transition duration-300">
+                    <i class="fas fa-user"></i>
+                    Lihat Profil
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-b from-darker to-dark border-t border-gray-800">
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid md:grid-cols-4 gap-12">
+                <div class="md:col-span-2">
+                    <h3 class="text-3xl font-bold mb-4 bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent">
+                        Connect with Me!
+                    </h3>
+                    <div class="flex gap-4">
+                        <a href="https://www.behance.net/afrzghani/" class="w-12 h-12 bg-gray-800 hover:bg-primary rounded-lg flex items-center justify-center transition duration-300 transform hover:scale-110 hover:shadow-lg hover:shadow-primary/50">
+                            <i class="fab fa-behance text-xl"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/mahdi-ghani-afriza/" class="w-12 h-12 bg-gray-800 hover:bg-primary rounded-lg flex items-center justify-center transition duration-300 transform hover:scale-110 hover:shadow-lg hover:shadow-primary/50">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="https://www.github.com/afrzghani/" class="w-12 h-12 bg-gray-800 hover:bg-primary rounded-lg flex items-center justify-center transition duration-300 transform hover:scale-110 hover:shadow-lg hover:shadow-primary/50">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                        <a href="https://www.instagram.com/afrzghani/" class="w-12 h-12 bg-gray-800 hover:bg-primary rounded-lg flex items-center justify-center transition duration-300 transform hover:scale-110 hover:shadow-lg hover:shadow-primary/50">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold text-lg mb-4 text-gray-100">Halaman</h4>
+                    <ul class="space-y-3">
+                        <li>
+                            <a href="index.html" class="text-gray-400 hover:text-primary transition duration-300 flex items-center gap-2">
+                                Beranda
+                            </a>
+                        </li>
+                        <li>
+                            <a href="services.html" class="text-gray-400 hover:text-primary transition duration-300 flex items-center gap-2">
+                                Layanan
+                            </a>
+                        </li>
+                        <li>
+                            <a href="projects.html" class="text-gray-400 hover:text-primary transition duration-300 flex items-center gap-2">
+                                Portofolio
+                            </a>
+                        </li>
+                        <li>
+                            <a href="profile.html" class="text-gray-400 hover:text-primary transition duration-300 flex items-center gap-2">
+                                Profil
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold text-lg mb-4 text-gray-100">Hubungi Saya</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-3 text-gray-400">
+                            <i class="fas fa-envelope text-primary mt-1"></i>
+                            <a href="mailto:ramaghani0513@gmail.com" class="hover:text-primary transition duration-300">
+                                ramaghani0513@gmail.com
+                            </a>
+                        </li>
+                        <li class="flex items-start gap-3 text-gray-400">
+                            <i class="fas fa-map-marker-alt text-primary mt-1"></i>
+                            <span>Gresik, Jawa Timur</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-gray-400">
+                            <i class="fas fa-clock text-primary mt-1"></i>
+                            <span>Tersedia untuk freelance</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                    <p class="text-gray-400 text-sm">
+                        &copy; Mahdi Ghani Afriza
+                    </p>
+                    <div class="flex items-center gap-6 text-sm">
+                        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="text-gray-400 hover:text-primary transition duration-300 flex items-center gap-2">
+                            <span>Balik ke Atas</span>
+                            <i class="fas fa-arrow-up text-xs"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="projects-data.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
+

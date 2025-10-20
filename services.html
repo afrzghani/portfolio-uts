@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layanan - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3b82f6',
+                        dark: '#0f172a',
+                        darker: '#020617',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .service-detail {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .service-detail.active {
+            max-height: 2000px;
+            transition: max-height 0.5s ease-in;
+        }
+    </style>
+</head>
+<body class="bg-darker text-gray-100">
+    <!-- Nav -->
+    <nav class="bg-dark/80 backdrop-blur-sm fixed w-full z-50 border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-bold text-primary">afrzghani</a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-100 hover:text-primary transition duration-300">Beranda</a>
+                    <a href="services.html" class="text-gray-300 hover:text-primary transition duration-300">Layanan</a>
+                    <a href="projects.html" class="text-gray-300 hover:text-primary transition duration-300">Portofolio</a>
+                    <a href="profile.html" class="text-gray-300 hover:text-primary transition duration-300">Profil</a>
+                </div>
+                <!-- Mobile menu -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-primary">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-dark border-t border-gray-800">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 text-gray-100 hover:bg-gray-800 rounded-md">Beranda</a>
+                <a href="services.html" class="block px-3 py-2 text-gray-300 hover:bg-gray-800 rounded-md">Layanan</a>
+                <a href="projects.html" class="block px-3 py-2 text-gray-300 hover:bg-gray-800 rounded-md">Portofolio</a>
+                <a href="profile.html" class="block px-3 py-2 text-gray-300 hover:bg-gray-800 rounded-md">Profil</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero  -->
+    <section class="pt-36 pb-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto text-center">
+            <h1 class="text-5xl md:text-6xl font-bold mb-4 pb-2 bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent">
+                Layanan yang Saya Tawarkan
+            </h1>
+            <p class="text-xl text-gray-400 max-w-2xl mx-auto mb-8">
+                Layanan desain yang disesuaikan untuk mewujudkan visi Anda. Dari konsep awal hingga eksekusi akhir, saya siap membantu Anda.
+            </p>
+        </div>
+    </section>
+
+    <!-- Layanan -->
+    <section id="services" class="py-20 px-4 sm:px-6 lg:px-8 bg-dark/50">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Apa yang Bisa Saya Lakukan untuk Anda</h2>
+                <p class="text-gray-400 text-lg">Klik layanan untuk lebih detail</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 1: UI/UX -->
+                <div class="service-card bg-dark rounded-2xl overflow-hidden border border-gray-800 hover:border-primary transition-all duration-300">
+                    <div class="p-8">
+                        <div class="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition duration-300">
+                            <i class="fas fa-mobile-screen-button text-primary text-3xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold mb-4">Desain UI/UX</h3>
+                        <p class="text-gray-400 mb-6">Design interface yang user-friendly dengan user experience yang seamless, bikin pengunjung betah.</p>
+                        
+                        <button onclick="toggleDetail('uiux')" class="text-primary hover:text-blue-400 font-semibold inline-flex items-center gap-2 mb-4">
+                            <span>Pelajari Lebih Lanjut</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+
+                        <div id="uiux" class="service-detail border-t border-gray-800 pt-6 mt-6">
+                            <h4 class="font-semibold mb-3 text-primary">Yang Termasuk:</h4>
+                            <ul class="space-y-2 mb-6">
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-check text-primary mt-1"></i>
+                                    <span class="text-gray-400">Riset user & mapping persona</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-check text-primary mt-1"></i>
+                                    <span class="text-gray-400">Wireframing & prototype low-fidelity</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-check text-primary mt-1"></i>
+                                    <span class="text-gray-400">Desain mockup high-fidelity</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-check text-primary mt-1"></i>
+                                    <span class="text-gray-400">Prototype interaktif yang clickable</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-check text-primary mt-1"></i>
+                                    <span class="text-gray-400">Testing usability & iterasi desain</span>
+                                </li>
+                            </ul>
+
+                            <h4 class="font-semibold mb-3 text-primary">Waktu Pengerjaan:</h4>
+                            <p class="text-gray-400 mb-6">2-4 minggu</p>
+
+                            <a href="#order-form" class="block w-full bg-primary hover:bg-blue-600 text-white text-center font-semibold px-6 py-3 rounded-lg transition duration-300">
+                                Mulai Proyek
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2: Branding & Identitas -->
+                <div class="service-card bg-dark rounded-2xl overflow-hidden border border-gray-800 hover:border-primary transition-all duration-300">
+                    <div class="p-8">
+                        <div class="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+                            <i class="fas fa-palette text-primary text-3xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold mb-4">Branding & Identitas</h3>
+                        <p class="text-gray-400 mb-6">Bangun brand identity yang memorable dengan visual guideline yang konsisten buat bisnis kamu.</p>
+                        
+                        <button onclick="toggleDetail('branding')" class="text-primary hover:text-blue-400 font-semibold inline-flex items-center gap-2 mb-4">
+                            <span>Pelajari Lebih Lanjut</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+
+                        <div id="branding" class="service-detail border-t border-gray-800 pt-6 mt-6">
+                            <h4 class="font-semibold mb-3 text-primary">Yang Termasuk:</h4>
+                            <ul class="space-y-2 mb-6">
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-check text-primary mt-1"></i>
+                                    <span class="text-gray-400">Desain logo (3 konsep alternatif)</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-check text-primary mt-1"></i>
+                                    <span class="text-gray-400">Palet warna & mood board</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-check text-primary mt-1"></i>
+                                    <span class="text-gray-400">Pairing typography & hierarchy</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-check text-primary mt-1"></i>
+                                    <span class="text-gray-400">Dokumen brand guideline (PDF)</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-check text-primary mt-1"></i>
+                                    <span class="text-gray-400">Desain business card & stationery</span>
+                                </li>
+                            </ul>
+
+                            <h4 class="font-semibold mb-3 text-primary">Waktu Pengerjaan:</h4>
+                            <p class="text-gray-400 mb-6">3-5 minggu</p>
+
+                            <a href="#order-form" class="block w-full bg-primary hover:bg-blue-600 text-white text-center font-semibold px-6 py-3 rounded-lg transition duration-300">
+                                Mulai Proyek
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3: Desain Sosmed -->
+                <div class="service-card bg-dark rounded-2xl overflow-hidden border border-gray-800 hover:border-primary transition-all duration-300">
+                    <div class="p-8">
+                        <div class="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+                            <i class="fas fa-hashtag text-primary text-3xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold mb-4">Desain Sosial Media</h3>
+                        <p class="text-gray-400 mb-6">Bikin konten visual yang engaging buat boost performa social media dengan feed yang aesthetic.</p>
+                        
+                        <button onclick="toggleDetail('sosmed')" class="text-primary hover:text-blue-400 font-semibold inline-flex items-center gap-2 mb-4">
+                            <span>Pelajari Lebih Lanjut</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+
+                        <div id="sosmed" class="service-detail border-t border-gray-800 pt-6 mt-6">
+                            <h4 class="font-semibold mb-3 text-primary">Yang Termasuk:</h4>
+                            <ul class="space-y-2 mb-6">
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-check text-primary mt-1"></i>
+                                    <span class="text-gray-400">Template custom (Instagram, Facebook, Twitter/X)</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-check text-primary mt-1"></i>
+                                    <span class="text-gray-400">Desain feed post & story (tema yang cohesive)</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-check text-primary mt-1"></i>
+                                    <span class="text-gray-400">Konten promo & material campaign</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-check text-primary mt-1"></i>
+                                    <span class="text-gray-400">Guideline brand untuk sosial media</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-check text-primary mt-1"></i>
+                                    <span class="text-gray-400">File siap posting (PNG, JPG, ukuran optimal)</span>
+                                </li>
+                            </ul>
+
+                            <h4 class="font-semibold mb-3 text-primary">Waktu Pengerjaan:</h4>
+                            <p class="text-gray-400 mb-6">1-2 minggu</p>
+
+                            <a href="#order-form" class="block w-full bg-primary hover:bg-blue-600 text-white text-center font-semibold px-6 py-3 rounded-lg transition duration-300">
+                                Mulai Proyek
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4: Desain Poster -->
+                <div class="service-card bg-dark rounded-2xl overflow-hidden border border-gray-800 hover:border-primary transition-all duration-300">
+                    <div class="p-8">
+                        <div class="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+                            <i class="fas fa-image text-primary text-3xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold mb-4">Desain Poster</h3>
+                        <p class="text-gray-400 mb-6">Bikin poster yang eye-catching dengan komposisi visual yang kuat buat promosi atau event kamu.</p>
+                        
+                        <button onclick="toggleDetail('poster')" class="text-primary hover:text-blue-400 font-semibold inline-flex items-center gap-2 mb-4">
+                            <span>Pelajari Lebih Lanjut</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+
+                        <div id="poster" class="service-detail border-t border-gray-800 pt-6 mt-6">
+                            <h4 class="font-semibold mb-3 text-primary">Yang Termasuk:</h4>
+                            <ul class="space-y-2 mb-6">
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-check text-primary mt-1"></i>
+                                    <span class="text-gray-400">Konsep desain dengan hierarki visual yang jelas</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-check text-primary mt-1"></i>
+                                    <span class="text-gray-400">Multiple size (A3, A2, custom dimension)</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-check text-primary mt-1"></i>
+                                    <span class="text-gray-400">File print-ready (CMYK, 300 DPI) & digital (RGB)</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-check text-primary mt-1"></i>
+                                    <span class="text-gray-400">Format lengkap (PDF, PNG, JPG, AI/PSD)</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-check text-primary mt-1"></i>
+                                    <span class="text-gray-400">Revisi sampai puas (max 3x)</span>
+                                </li>
+                            </ul>
+
+                            <h4 class="font-semibold mb-3 text-primary">Waktu Pengerjaan:</h4>
+                            <p class="text-gray-400 mb-6">3-7 hari kerja</p>
+
+                            <a href="#order-form" class="block w-full bg-primary hover:bg-blue-600 text-white text-center font-semibold px-6 py-3 rounded-lg transition duration-300">
+                                Mulai Proyek
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5: Desain Web -->
+                <div class="service-card bg-dark rounded-2xl overflow-hidden border border-gray-800 hover:border-primary transition-all duration-300">
+                    <div class="p-8">
+                        <div class="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+                            <i class="fas fa-laptop-code text-primary text-3xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold mb-4">Desain Web</h3>
+                        <p class="text-gray-400 mb-6">Design website yang responsive dengan layout modern, cocok buat personal maupun bisnis kamu.</p>
+                        
+                        <button onclick="toggleDetail('web')" class="text-primary hover:text-blue-400 font-semibold inline-flex items-center gap-2 mb-4">
+                            <span>Pelajari Lebih Lanjut</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+
+                        <div id="web" class="service-detail border-t border-gray-800 pt-6 mt-6">
+                            <h4 class="font-semibold mb-3 text-primary">Yang Termasuk:</h4>
+                            <ul class="space-y-2 mb-6">
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-check text-primary mt-1"></i>
+                                    <span class="text-gray-400">Layout full responsive (mobile, tablet, desktop)</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-check text-primary mt-1"></i>
+                                    <span class="text-gray-400">Desain maksimal 5 halaman</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-check text-primary mt-1"></i>
+                                    <span class="text-gray-400">Komponen UI modern & interactions</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-check text-primary mt-1"></i>
+                                    <span class="text-gray-400">Struktur yang SEO-friendly</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-check text-primary mt-1"></i>
+                                    <span class="text-gray-400">File handoff ke developer (Figma/Adobe XD)</span>
+                                </li>
+                            </ul>
+
+                            <h4 class="font-semibold mb-3 text-primary">Waktu Pengerjaan:</h4>
+                            <p class="text-gray-400 mb-6">3-6 minggu tergantung kompleksitas</p>
+
+                            <a href="#order-form" class="block w-full bg-primary hover:bg-blue-600 text-white text-center font-semibold px-6 py-3 rounded-lg transition duration-300">
+                                Mulai Proyek
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6: Desain Aplikasi Mobile -->
+                <div class="service-card bg-dark rounded-2xl overflow-hidden border border-gray-800 hover:border-primary transition-all duration-300">
+                    <div class="p-8">
+                        <div class="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+                            <i class="fas fa-mobile-alt text-primary text-3xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold mb-4">Desain Aplikasi Mobile</h3>
+                        <p class="text-gray-400 mb-6">Bikin app interface yang user-friendly dengan UX flow yang smooth buat iOS & Android.</p>
+                        
+                        <button onclick="toggleDetail('mobile')" class="text-primary hover:text-blue-400 font-semibold inline-flex items-center gap-2 mb-4">
+                            <span>Pelajari Lebih Lanjut</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+
+                        <div id="mobile" class="service-detail border-t border-gray-800 pt-6 mt-6">
+                            <h4 class="font-semibold mb-3 text-primary">Yang Termasuk:</h4>
+                            <ul class="space-y-2 mb-6">
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-check text-primary mt-1"></i>
+                                    <span class="text-gray-400">Desain platform iOS & Android native</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-check text-primary mt-1"></i>
+                                    <span class="text-gray-400">Mapping user flow & wireframe</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-check text-primary mt-1"></i>
+                                    <span class="text-gray-400">10-15 screen high-fidelity</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-check text-primary mt-1"></i>
+                                    <span class="text-gray-400">Prototype interaktif yang clickable</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-check text-primary mt-1"></i>
+                                    <span class="text-gray-400">Set icon custom & asset visual</span>
+                                </li>
+                            </ul>
+
+                            <h4 class="font-semibold mb-3 text-primary">Waktu Pengerjaan:</h4>
+                            <p class="text-gray-400 mb-6">4-6 minggu</p>
+
+                            <a href="#order-form" class="block w-full bg-primary hover:bg-blue-600 text-white text-center font-semibold px-6 py-3 rounded-lg transition duration-300">
+                                Mulai Proyek
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Siap Memulai Proyek Anda?</h2>
+                <p class="text-xl text-gray-300 mb-4">
+                    Isi form pemesanan di bawah ini untuk memulai proyek Anda.
+                </p>
+            </div>
+
+            <div class="bg-dark rounded-2xl p-8 md:p-12 border border-gray-800">
+                <form id="order-form" class="space-y-6">
+                    <!-- Nama -->
+                    <div>
+                        <label for="nama" class="block text-sm font-medium text-gray-300 mb-2">
+                            Nama <span class="text-red-500">*</span>
+                        </label>
+                        <input 
+                            type="text" 
+                            id="nama" 
+                            name="nama"
+                            required
+                            class="w-full bg-darker border border-gray-700 rounded-lg px-4 py-3 text-gray-100 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/50 transition duration-300"
+                            placeholder="Nama lengkap Anda.."
+                        >
+                    </div>
+
+                    <!-- Email -->
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-300 mb-2">
+                            Email <span class="text-red-500">*</span>
+                        </label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email"
+                            required
+                            class="w-full bg-darker border border-gray-700 rounded-lg px-4 py-3 text-gray-100 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/50 transition duration-300"
+                            placeholder="ghani@example.com"
+                        >
+                    </div>
+
+                    <!-- No Telp -->
+                    <div>
+                        <label for="telp" class="block text-sm font-medium text-gray-300 mb-2">
+                            Phone Number <span class="text-gray-500">(Optional)</span>
+                        </label>
+                        <input 
+                            type="tel" 
+                            id="telp" 
+                            name="telp"
+                            class="w-full bg-darker border border-gray-700 rounded-lg px-4 py-3 text-gray-100 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/50 transition duration-300"
+                            placeholder="+62 812-3456-7890"
+                        >
+                    </div>
+
+                    <!-- Layanan -->
+                    <div>
+                        <label for="layanan" class="block text-sm font-medium text-gray-300 mb-2">
+                            Kebutuhan Layanan <span class="text-red-500">*</span>
+                        </label>
+                        <select 
+                            id="layanan" 
+                            name="layanan"
+                            required
+                            class="w-full bg-darker border border-gray-700 rounded-lg px-4 py-3 text-gray-100 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/50 transition duration-300"
+                        >
+                            <option value="">Plih Layanan...</option>
+                            <option value="uiux">UI/UX Design</option>
+                            <option value="branding">Identitas Brand</option>
+                            <option value="sosmed">Desain Sosial Media</option>
+                            <option value="poster">Desain Poster</option>
+                            <option value="web">Desain Web</option>
+                            <option value="mobile">Desain Mobile</option>
+                            <option value="custom">Custom</option>
+                        </select>
+                    </div>
+
+                    <!-- Budget -->
+                    <div>
+                        <label for="budget" class="block text-sm font-medium text-gray-300 mb-2">
+                            Budget Proyek <span class="text-gray-500">(Optional)</span>
+                        </label>
+                        <select 
+                            id="budget" 
+                            name="budget"
+                            class="w-full bg-darker border border-gray-700 rounded-lg px-4 py-3 text-gray-100 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/50 transition duration-300"
+                        >
+                            <option value="">Pilih rentang budget...</option>
+                            <option value="<100">Dibawah Rp100k</option>
+                            <option value="100-500">Rp100k - Rp500k</option>
+                            <option value="500-1000">Rp500k - Rp1juta</option>
+                            <option value="1000+">Rp1juta++</option>
+                            <option value="diskusi">Memilih untuk diskusi</option>
+                        </select>
+                    </div>
+
+                    <!-- Timeline -->
+                    <div>
+                        <label for="timeline" class="block text-sm font-medium text-gray-300 mb-2">
+                            Rentang Waktu <span class="text-gray-500">(Optional)</span>
+                        </label>
+                        <select 
+                            id="timeline" 
+                            name="timeline"
+                            class="w-full bg-darker border border-gray-700 rounded-lg px-4 py-3 text-gray-100 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/50 transition duration-300"
+                        >
+                            <option value="">Pilih rentang waktu...</option>
+                            <option value="urgent">Segera / Urgent</option>
+                            <option value="1-2mgg">1-2 Minggu</option>
+                            <option value="1bln">1 Bulan</option>
+                            <option value="2-3bln">2-3 Bulan</option>
+                            <option value="fleksibel">Fleksibel</option>
+                        </select>
+                    </div>
+
+                    <!-- Detail -->
+                    <div>
+                        <label for="detail" class="block text-sm font-medium text-gray-300 mb-2">
+                            Detail Proyek <span class="text-red-500">*</span>
+                        </label>
+                        <textarea 
+                            id="detail" 
+                            name="detail"
+                            rows="6"
+                            required
+                            class="w-full bg-darker border border-gray-700 rounded-lg px-4 py-3 text-gray-100 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/50 transition duration-300 resize-none"
+                            placeholder="Beri saya gambaran umum proyek Anda..."
+                        ></textarea>
+                    </div>
+
+                    <!-- Submit -->
+                    <div class="pt-4">
+                        <button 
+                            type="submit"
+                            class="w-full bg-primary hover:bg-blue-600 text-white font-semibold px-8 py-4 rounded-lg transition duration-300 transform hover:scale-[1.02] shadow-lg hover:shadow-primary/50 flex items-center justify-center gap-3"
+                        >
+                            <i class="fas fa-paper-plane"></i>
+                            <span>Kirim Request Proyek</span>
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Pesan Terkirim -->
+                <div id="success-message" class="hidden text-center py-12">
+                    <div class="w-20 h-20 bg-green-500/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-check-circle text-green-500 text-4xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-3">Terima Kasih!</h3>
+                    <p class="text-gray-400 mb-6">
+                        Permintaan Anda akan segera diproses dan saya akan menghubungi Anda kembali dalam 24 jam.
+                    </p>
+                    <button onclick="resetForm()" class="text-primary hover:text-blue-400 font-semibold">
+                        Kirim Permintaan Lain
+                    </button>
+                </div>
+            </div>
+
+            <div class="mt-12 text-center">
+                <p class="text-gray-400 mb-4">Ingin menghubungi secara personal?</p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="mailto:ramaghani0513@gmail.com" class="inline-flex items-center gap-2 bg-gray-800 hover:bg-gray-700 text-white px-6 py-3 rounded-lg transition duration-300">
+                        <i class="fas fa-envelope"></i>
+                        Kirim Email
+                    </a>
+                    <a href="profile.html" class="inline-flex items-center gap-2 bg-gray-800 hover:bg-gray-700 text-white px-6 py-3 rounded-lg transition duration-300">
+                        <i class="fas fa-user"></i>
+                        Lihat Profil
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-b from-darker to-dark border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid md:grid-cols-4 gap-12">
+                <div class="md:col-span-2">
+                    <h3 class="text-3xl font-bold mb-4 bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent">
+                        Connect with Me!
+                    </h3>
+                    <div class="flex gap-4">
+                        <a href="https://www.behance.net/afrzghani/" class="w-12 h-12 bg-gray-800 hover:bg-primary rounded-lg flex items-center justify-center transition duration-300 transform hover:scale-110 hover:shadow-lg hover:shadow-primary/50">
+                            <i class="fab fa-behance text-xl"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/mahdi-ghani-afriza/" class="w-12 h-12 bg-gray-800 hover:bg-primary rounded-lg flex items-center justify-center transition duration-300 transform hover:scale-110 hover:shadow-lg hover:shadow-primary/50">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="https://www.github.com/afrzghani/" class="w-12 h-12 bg-gray-800 hover:bg-primary rounded-lg flex items-center justify-center transition duration-300 transform hover:scale-110 hover:shadow-lg hover:shadow-primary/50">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                        <a href="https://www.instagram.com/afrzghani/" class="w-12 h-12 bg-gray-800 hover:bg-primary rounded-lg flex items-center justify-center transition duration-300 transform hover:scale-110 hover:shadow-lg hover:shadow-primary/50">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold text-lg mb-4 text-gray-100">Halaman</h4>
+                    <ul class="space-y-3">
+                        <li>
+                            <a href="index.html" class="text-gray-400 hover:text-primary transition duration-300 flex items-center gap-2">
+                                Beranda
+                            </a>
+                        </li>
+                        <li>
+                            <a href="services.html" class="text-gray-400 hover:text-primary transition duration-300 flex items-center gap-2">
+                                Layanan
+                            </a>
+                        </li>
+                        <li>
+                            <a href="projects.html" class="text-gray-400 hover:text-primary transition duration-300 flex items-center gap-2">
+                                Portofolio
+                            </a>
+                        </li>
+                        <li>
+                            <a href="profile.html" class="text-gray-400 hover:text-primary transition duration-300 flex items-center gap-2">
+                                Profil
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold text-lg mb-4 text-gray-100">Hubungi Saya</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-3 text-gray-400">
+                            <i class="fas fa-envelope text-primary mt-1"></i>
+                            <a href="mailto:ramaghani0513@gmail.com" class="hover:text-primary transition duration-300">
+                                ramaghani0513@gmail.com
+                            </a>
+                        </li>
+                        <li class="flex items-start gap-3 text-gray-400">
+                            <i class="fas fa-map-marker-alt text-primary mt-1"></i>
+                            <span>Gresik, Jawa Timur</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-gray-400">
+                            <i class="fas fa-clock text-primary mt-1"></i>
+                            <span>Tersedia untuk freelance</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                    <p class="text-gray-400 text-sm">
+                        &copy; Mahdi Ghani Afriza
+                    </p>
+                    <div class="flex items-center gap-6 text-sm">
+                        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="text-gray-400 hover:text-primary transition duration-300 flex items-center gap-2">
+                            <span>Balik ke Atas</span>
+                            <i class="fas fa-arrow-up text-xs"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
+
