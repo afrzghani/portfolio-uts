@@ -80,3 +80,8 @@ Menampilkan informasi tentang diri:
 - **Dosen Pengampu:** Rifqi Abdillah, S.Tr.T., M.Kom.
 
 ---
+
+## Dokumentasi Presentasi
+[![Tonton di Youtube](https://img.youtube.com/vi/u1P7O7GCQjE?si=sPh-W5gD3Z98iVjp)][link]
+
+[link]: https://www.youtube.com/watch?v=u1P7O7GCQjE?si=sPh-W5gD3Z98iVjp
