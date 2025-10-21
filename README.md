@@ -82,6 +82,4 @@ Menampilkan informasi tentang diri:
 ---
 
 ## Dokumentasi Presentasi
-[![Tonton di Youtube](https://img.youtube.com/vi/u1P7O7GCQjE?si=sPh-W5gD3Z98iVjp)][link]
-
-[link]: https://www.youtube.com/watch?v=u1P7O7GCQjE?si=sPh-W5gD3Z98iVjp
+[Lihat Video Presentasi di Youtube](https://www.youtube.com/watch?v=u1P7O7GCQjE?si=sPh-W5gD3Z98iVjp)
